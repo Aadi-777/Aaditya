@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship Registration</title>
+</head>
+<body>
+
+    <h2>Scholarship Registration Form</h2>
+    <p>Welcome! Please fill out this form to apply for the scholarship.</p>
+
+    <form action="/submit" method="POST">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required placeholder="John Doe"><br><br>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required placeholder="youremail@example.com"><br><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required placeholder="1234567890" pattern="\d{10}"><br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required><br><br>
+
+        <label for="gender">Gender:</label><br>
+        <input type="radio" id="male" name="gender" value="Male" required>
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gender" value="Female" required>
+        <label for="female">Female</label><br>
+        <input type="radio" id="other" name="gender" value="Other" required>
+        <label for="other">Other</label><br><br>
+
+        <label for="course">Course of Study:</label>
+        <input type="text" id="course" name="course" required placeholder="e.g., Computer Science"><br><br>
+
+        <label for="institution">Educational Institution:</label>
+        <input type="text" id="institution" name="institution" required placeholder="e.g., University of XYZ"><br><br>
+
+        <label for="yearOfStudy">Year of Study:</label>
+        <select id="yearOfStudy" name="yearOfStudy" required>
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year</option>
+            <option value="5">5th Year</option>
+            <option value="graduate">Graduate</option>
+        </select><br><br>
+
+        <label for="gpa">Current GPA (0.0 - 4.0):</label>
+        <input type="number" id="gpa" name="gpa" min="0" max="4" step="0.1" required placeholder="e.g., 3.5"><br><br>
+
+        <label for="scholarshipType">Type of Scholarship:</label><br>
+        <input type="radio" id="merit" name="scholarshipType" value="Merit" required>
+        <label for="merit">Merit-Based</label><br>
+        <input type="radio" id="need" name="scholarshipType" value="Need" required>
+        <label for="need">Need-Based</label><br>
+        <input type="radio" id="both" name="scholarshipType" value="Both" required>
+        <label for="both">Both</label><br><br>
+
+        <label for="comments">Additional Comments:</label><br>
+        <textarea id="comments" name="comments" rows="4" cols="50" placeholder="Provide any extra information or concerns"></textarea><br><br>
+
+        <label for="documents">Upload Supporting Documents (Optional):</label>
+        <input type="file" id="documents" name="documents"><br><br>
+
+        <label for="consent">I agree to the terms and conditions:</label>
+        <input type="checkbox" id="consent" name="consent" required><br><br>
+
+        <label>Registration Progress:</label><br>
+        <progress value="50" max="100" id="progressBar"></progress><br><br>
+
+        <input type="submit" value="Register">
+    </form>
+
+    <script>
+        const inputs = document.querySelectorAll("input, select, textarea");
+        const progressBar = document.getElementById("progressBar");
+
+        inputs.forEach(input => {
+            input.addEventListener("input", () => {
+                let filled = 0;
+                inputs.forEach(input => {
+                    if (input.value) filled++;
+                });
+                let progress = (filled / inputs.length) * 100;
+                progressBar.value = progress;
+            });
+        });
+    </script>
+
+</body>
+</html>
